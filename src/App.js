@@ -1,26 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useWeb3Provider, Web3Context } from './hooks/web3'
 
-function App() {
+const App = () => {
+  const { web3 } = useWeb3Provider()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Web3Context.Provider value={web3}>
+     <div>Test</div>
+    </Web3Context.Provider>
+  )
 }
 
-export default App;
+export default App
