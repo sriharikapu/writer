@@ -3,10 +3,11 @@ import { useWeb3Provider, Web3Context } from "./hooks/web3";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { GlobalStyles } from "./theme";
 
-const Header = () => <div>Placeholder</div>;
-const Footer = () => <div>Placeholder</div>;
-const HomePage = () => <div>Placeholder</div>;
-const PageNotFound = () => <div>Placeholder</div>;
+import HomePage from './pages/Home'
+import PageNotFound from './pages/PageNotFound'
+
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 const App = () => {
   const { web3 } = useWeb3Provider();
