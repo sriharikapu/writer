@@ -6,13 +6,21 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { GlobalStyles } from 'theme'
 
 function App () {
-  const { web3 } = useWeb3Provider()
+  const { web3, enableFortmatic, enableMetamask } = useWeb3Provider(true)
+
+  const enableProvider = type => {
+    if (type === 'fortmatic') {
+      enableFortmatic()
+    } else {
+      enableMetamask()
+    }
+  }
 
   return (
     <Web3Context.Provider value={web3}>
       <GlobalStyles />
       <Router>
-        <Header />
+        <Header onEnable={enableProvider} />
         <Writing />
         <WritingCall />
         <WritingPut />
