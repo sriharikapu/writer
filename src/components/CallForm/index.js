@@ -1,34 +1,41 @@
 import { Button, Form, FormSection } from 'components'
+import CallStepper from 'components/CallStepper'
+import useExpirationDate from 'hooks/useExpirationDate'
+import useStrikePrice from 'hooks/useStrikePrice'
 import numeral from 'numeral'
 import React, { useState } from 'react'
-import InputMask from 'react-input-mask'
+import CurrencyInput from 'react-currency-input'
 
-export default function PutForm () {
+export default function CallForm ({ optionAddress }) {
   const [amount, setAmount] = useState(0)
-  const futureDate = '21.fev.2020'
-  const strikePrice = 270
+  const [stepperIsOpen, setIsStepperOpen] = useState(false)
+  const futureDate = useExpirationDate(optionAddress)
+  const strikePrice = useStrikePrice(optionAddress)
 
   return (
-    <Form>
+    <Form onSubmit={event => {
+      event.preventDefault()
+      setIsStepperOpen(true)
+    }}
+    >
       <FormSection>
         <p>I agree to lock</p>
         <div className='text-blue'>
-          <InputMask
-            type='tel'
+          <CurrencyInput
             value={amount}
-            onChange={event => {
-              const value = numeral(event.target.value).format('0.00')
-              setAmount(parseFloat(value))
+            onChange={(masked, value) => {
+              setAmount(value)
             }}
-            mask='9.99 ETH'
-            maskChar='0'
+            decimalSeparator='.'
+            thousandSeparator=''
+            suffix=' ETH'
           />
         </div>
       </FormSection>
       <FormSection>
-        <p>committing to sell it at</p>
+        <p>committing to sell it for</p>
         <div className='text-green'>
-          {numeral(strikePrice * amount).format('0.00')} DAI
+          {numeral(strikePrice).format('0.00')} DAI
         </div>
       </FormSection>
       <FormSection>
@@ -38,10 +45,13 @@ export default function PutForm () {
         </div>
       </FormSection>
       <div className='form-actions'>
-        <Button size='big'>
+        <Button size='big' type='submit' disabled={amount <= 0}>
           Write
         </Button>
       </div>
+      {stepperIsOpen && (
+        <CallStepper amount={amount} onClose={() => setIsStepperOpen(false)} />
+      )}
     </Form>
   )
 }

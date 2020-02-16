@@ -39,7 +39,7 @@ export default function Footer () {
         </Link>
 
         <p>
-          Need a help? - <a href='mailto:support@ohmydefi.com'>support@ohmydefi.com</a>
+          Need help? - <a href='mailto:support@ohmydefi.com'>support@ohmydefi.com</a>
         </p>
 
       </Container>

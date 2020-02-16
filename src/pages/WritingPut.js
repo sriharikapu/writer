@@ -5,14 +5,14 @@ export default function WritingPut () {
   return (
     <Page
       path='/put/:underlying/:strike/:optionAddress' render={({ match }) => {
-        const { underlying, strike } = match.params
+        const { underlying, strike, optionAddress } = match.params
         return (
           <Container>
             <BackgroundCard>
               <PageTitle>
               Write Put Option On {underlying.toUpperCase()}:{strike.toUpperCase()} Market
               </PageTitle>
-              <PutForm />
+              <PutForm optionAddress={optionAddress} />
             </BackgroundCard>
           </Container>
         )
