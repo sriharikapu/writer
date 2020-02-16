@@ -1,18 +1,20 @@
 import { createGlobalStyle } from 'styled-components'
-import createMediaQueries from './utils/media-query'
+import createMediaQueries from 'util/media-query'
 
 // Colors
 export const color = {
-  primary: '#3c4653',
-  blue: '#39e6e0',
-  purple: '#4420d8',
-  purpleAux: '#917dff',
-  yellow: '#ffbe44',
-  pink: '#ff2972',
-  white: '#fff',
-  black: '#000',
-  greenLight: '#7fed73',
-  grey: '#ccc'
+  background: '#324a5e',
+  primary: '#3498db',
+  success: '#2ecc71',
+  danger: '#e74c3c',
+  warning: '#f1c40f',
+  grey: '#e1e1e1',
+  green1: '#CEED74',
+  green2: '#77B796',
+  purple1: '#8377B7',
+  pink1: '#D06AF4',
+  blue1: '#466D94',
+  black1: '#181717'
 }
 
 export const sizes = {
@@ -36,111 +38,31 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   html {
-    font-size: 112.5%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: rgb(1, 1, 1);
+    scroll-behavior: smooth;
   }
   
   body {
-    background: ${color.white};
-    color: ${color.primary};
-    font-family: "AvenirNext-Bold", sans-serif;
-    font-feature-settings: 'kern', 'liga', 'clig', 'calt';
-    font-kerning: normal;
-    font-weight: normal;
-    line-height: 1.45em;
-    word-wrap: break-word;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    padding: 0;
-    color: inherit;
-    font-weight: bold;
-    line-height: 1.1;
-    margin: 0 0 1.45rem;
-    text-rendering: optimizeLegibility;
-  }
-  
-  h1 {
-    font-size: 2em;
-    font-weight: 300;
-  }
-  
-  h2 {
-    font-size: 1.62671rem;
-  }
-  
-  h3 {
-    font-size: 1.38316rem;
-  }
-  
-  h4 {
-    font-size: 1rem;
-  }
-  
-  h5 {
-    font-size: 0.85028rem;
-  }
-  
-  h6 {
-    font-size: 0.78405rem;
-  }
-  
-  button {
-    background: ${color.primary};
-    border: 1px solid ${color.white};
-    box-shadow: none;
-    color: ${color.white};
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 400;
-    outline: none;
-    padding: 10px 15px;
-    transition: all 200ms;
-  
-    &:hover:not(:disabled) {
-      background: ${color.white};
-      color: ${color.primary};
-      border-color: ${color.primary};
-    }
-    
-    &:disabled {
-      background-color: ${color.greenLight};
-      border-radius: 25px;
-      cursor: not-allowed;
-      opacity: 0.3;
-    }
-  
-    &.yellow {
-      background: ${color.yellow};
-      &:hover {
-        background: ${color.white};
-        color: ${color.yellow};
-        border-color: ${color.yellow};
-      }
-    }
-  
-    &.pink {
-      background: ${color.pink};
-      &:hover {
-        background: ${color.white};
-        color: ${color.pink};
-        border-color: ${color.pink};
-      }
-    }
-  }
-  
-  a {
-    text-decoration: none;
+    background: linear-gradient(#3E3E3E 0%, #202020 45%);
   }
   
   #root {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
   }
   
-  ${media.xs.down`
-    html {
-      font-size: 100%;
-    }
-  `}
+  .text-blue {
+    color: #7486ED;
+  }
+  
+  .text-green {
+    color: #ABED74;
+  }
+  
+  .text-red {
+    color: #ED9174;
+  }
 `

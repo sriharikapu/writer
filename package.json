@@ -2,23 +2,17 @@
   "name": "writer",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0",
-    "react-toastify": "^5.5.0",
-    "styled-components": "^5.0.1",
-    "web3": "^1.2.6"
-  },
+  "description": "Derivatives on chain are here",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test:ci": "CI=true react-scripts test --env=jsdom --passWithNoTests",
+    "eject": "react-scripts eject",
+    "lint": "standard",
+    "lint:fix": "standard --fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,7 +29,40 @@
       "last 1 safari version"
     ]
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint && npm run test:ci"
+    }
+  },
+  "standard": {
+    "globals": [
+      "it",
+      "describe",
+      "beforeAll",
+      "test",
+      "expect",
+      "fetch"
+    ]
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "evergreen-ui": "4.23.0",
+    "normalize.css": "8.0.1",
+    "numeral": "2.0.6",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-input-mask": "2.0.4",
+    "react-router-dom": "5.1.2",
+    "react-scripts": "3.4.0",
+    "styled-components": "4.4.1",
+    "web3": "1.2.6"
+  },
   "devDependencies": {
-    "node-sass": "^4.13.1"
+    "gh-pages": "2.2.0",
+    "husky": "4.0.6",
+    "standard": "14.3.1"
   }
 }
