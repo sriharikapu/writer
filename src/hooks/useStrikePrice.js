@@ -12,7 +12,7 @@ export default function useStrikePrice (address) {
 
       contract.methods.strikePrice().call()
         .then(strikePrice => {
-          setStrikePrice(parseFloat(web3.utils.fromWei(strikePrice)))
+          setStrikePrice(parseFloat(strikePrice))
         })
     }
   }, [web3, address])

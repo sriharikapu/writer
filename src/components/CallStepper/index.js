@@ -68,7 +68,8 @@ function useCallStepper (amount) {
     }
 
     const mintOptions = (amount, fromAddress) => {
-      return optionContract.methods.mint().send({ from: fromAddress, value: (amount * 1e18).toString() })
+      const value = (amount * 1e18).toString()
+      return optionContract.methods.mint().send({ from: fromAddress, value })
     }
 
     const approveSell = async (fromAddress) => {

@@ -68,7 +68,7 @@ function usePutStepper (amount) {
     }
 
     const mintOptions = (amount, fromAddress) => {
-      return optionContract.methods.mint(amount.toString()).send({ from: fromAddress })
+      return optionContract.methods.mint((amount * 1e18).toString()).send({ from: fromAddress })
     }
 
     const approveSell = async (fromAddress) => {

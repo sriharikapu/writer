@@ -1,16 +1,9 @@
 import { BackgroundCard, Container, LinkButton, Page, PageTitle, Table } from 'components'
-import { getNetworkVersion } from 'hooks/web3'
+import getAddresses from 'constants/addresses'
 import React from 'react'
 
 export default function Writing () {
-  const network = getNetworkVersion()
-  let call = '0x9ed68E380A1433Ead80267c0E0dDa209a695bDC4'
-  let put = '0x58052854f0CdE960BDCAA676EF37C571523ad18B'
-
-  if (network === '1') {
-    call = '0x9ed68E380A1433Ead80267c0E0dDa209a695bDC4'
-    put = '0x83c9FD6754666F4c5dC3556afBD7B5b48E46E99b'
-  }
+  const { call, put } = getAddresses()
 
   return (
     <Page path='/' exact>

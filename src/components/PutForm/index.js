@@ -1,9 +1,9 @@
 import { Button, Form, FormSection, PutStepper } from 'components'
 import useExpirationDate from 'hooks/useExpirationDate'
 import useStrikePrice from 'hooks/useStrikePrice'
+import numeral from 'numeral'
 import React, { useState } from 'react'
 import CurrencyInput from 'react-currency-input'
-import numeral from 'numeral'
 
 export default function PutForm ({ optionAddress }) {
   const [amount, setAmount] = useState(0)
